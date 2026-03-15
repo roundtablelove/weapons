@@ -220,9 +220,9 @@ All prices are refurb market estimates. Optional components MAY be purchased at 
 | Item | Cost |
 | :--- | :--- |
 | ThinkPad T480 (refurb) | GBP 130-160 |
-| 2x 16 GB DDR4 SODIMM | GBP 20-25 |
+| 2x 16 GB DDR4 SODIMM | GBP 35-65 |
 | CH341A + SOIC-8 clip | GBP 5-10 |
-| **T480 Total** | **GBP 155-195** |
+| **T480 Total** | **GBP 170-235** |
 
 | Item | Cost |
 | :--- | :--- |
