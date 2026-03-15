@@ -126,7 +126,7 @@ Slots into the T480 WWAN M.2 bay (2242). Nano-SIM tray is present on chassis. We
 
 ### 2.5 Dock: Lenovo ThinkPad Ultra 40AJ (optional)
 
-Single-cable via TB3. Provides power, DP/HDMI, Gigabit Ethernet, 2x USB-A. Operators SHOULD prefer the 135W PSU variant.
+Single-cable via TB3. Provides power, DP/HDMI, Gigabit Ethernet, 2x USB-A. The 40AJ MUST be paired with the 135W PSU -- the 90W variant cannot sustain full load on the T480.
 
 ---
 
