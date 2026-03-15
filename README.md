@@ -17,7 +17,7 @@ Keywords:  Per RFC 2119
 SFA comprises two systems:
 
 - **[Short](#3-short-pixel-7--grapheneos)** -- field communication and mobile compute
-- **[Long](#2-long-thinkpad-t480)** -- primary hacking platform
+- **[Long](#2-long)** -- primary hacking platform
 
 ## 0.1 Executive Summary
 
@@ -38,6 +38,8 @@ The SFA equips every Round Table Hacker with two Babylon-free weapon systems: a 
 
 | Requirement | Arm | Reason |
 | :--- | :--- | :--- |
+| CPU: 4c/8t minimum | Long | Parallel tooling, containers, language servers |
+| RAM: 32 GB minimum | Long | The Hacker's local environment runs without constraint |
 | Workflow: terminal-first | Long | The interface of a Hacker is the terminal |
 | Keyboard: backlit | Long | A Hacker operates in all conditions |
 | Firmware: Babylon-free | Long | The machine must answer only to its operator |
@@ -49,7 +51,22 @@ The SFA equips every Round Table Hacker with two Babylon-free weapon systems: a 
 
 ---
 
-## 2. Long: ThinkPad T480
+## 2. Long
+
+Two models are sanctioned. Operators choose based on budget and operational priority.
+
+| | T480 | T14 Gen 5 |
+| :--- | :--- | :--- |
+| Cost (refurb) | GBP 130-160 | GBP 450-600 |
+| CPU | i7-8550U (4c/8t) | Core Ultra 7 / Ryzen 7 Pro (8-12c) |
+| RAM | 32 GB | 32-64 GB |
+| Display | 14" FHD IPS 16:9 | 14" 16:10 (OLED opt.) |
+| Thunderbolt | TB3 | TB4 |
+| Battery | Swappable (PowerBridge) | Internal only |
+| Heads support | Mature, well-documented | Less mature |
+| Parts availability | Abundant, falling | Current |
+
+The T480 is the default. The T14 Gen 5 is the upgrade path for Hackers who demand modern CPU performance or a longer hardware support runway.
 
 ### 2.1 ThinkPad T480
 
@@ -68,17 +85,30 @@ Procurement: refurb. Operators MAY purchase base config (8 GB / 256 GB) and upgr
 
 #### 2.1.1 Rationale
 
-The T480 is the last ThinkPad T series with 2x user-replaceable SODIMM. Every successor solders one slot. The T480 keyboard offers 1.8mm key travel -- the ThinkPad standard that defines the typing experience a Hacker requires.
+Cheapest sanctioned Long. Heads support is mature. The 1.8mm keyboard defines the typing experience a Hacker requires. The swappable PowerBridge battery enables extended field operations without shutdown.
 
-Successors disqualified:
+### 2.2 ThinkPad T14 Gen 5
 
-1. T490 (2019) -- one soldered slot
-2. T14 Gen 1-2 (2020-21) -- one soldered slot; 2-3x cost
-3. T14 Gen 3+ (2022+) -- one soldered slot; 4-6x cost
+| Component | Specification |
+| :--- | :--- |
+| CPU | Intel Core Ultra 7 165U (12c/14t) or AMD Ryzen 7 Pro 8840U (8c/16t) |
+| RAM | 32-64 GB DDR5 |
+| Storage | 512 GB NVMe M.2 PCIe 4 |
+| Display | 14" IPS 16:10, 1920x1200 (2.8K OLED optional) |
+| Wireless | Wi-Fi 7, Bluetooth 5.3 |
+| Ports | TB4 x2, USB-A x2, HDMI 2.1, RJ45, 3.5 mm |
+| Fingerprint | Integrated |
+| Battery | 58 Wh internal |
 
-SFA-1.0 MUST be revised when a successor platform matches or exceeds the T480 on all criteria at comparable cost.
+Procurement: refurb.
 
-### 2.2 Flash Tooling: CH341A + SOIC-8
+#### 2.2.1 Rationale
+
+Modern CPU, TB4, 16:10 display, and active security support. Heads support for the T14 Gen 5 is less mature than the T480 -- operators MUST verify current Heads compatibility before procurement. No swappable battery.
+
+SFA-1.0 MUST be revised as Heads T14 Gen 5 support matures.
+
+### 2.3 Flash Tooling: CH341A + SOIC-8 (T480 only)
 
 Operators MUST procure flash tooling before taking delivery of any Long unit. MAY be shared and reused.
 
@@ -87,19 +117,22 @@ Operators MUST procure flash tooling before taking delivery of any Long unit. MA
 | CH341A SPI programmer | External flash interface |
 | SOIC-8 clip | T480 flash chip connection |
 
-### 2.3 Mobile Connectivity: Sierra Wireless EM7455 (optional)
+> [!WARNING]
+> Ensure the `SOIC-8` clip is high-quality (Pomona 5250 or equivalent). Low-grade clips introduce noise into the SPI stream, risking a `Logic_Violation` (brick).
 
-Fits the T480 WWAN M.2 slot (2242). Requires nano-SIM tray (present on chassis). Well-supported on Linux.
+### 2.4 Mobile Connectivity: Sierra Wireless EM7455 (optional)
 
-### 2.4 Dock: Lenovo ThinkPad Ultra 40AJ (optional)
+Slots into the T480 WWAN M.2 bay (2242). Nano-SIM tray is present on chassis. Well-supported on Linux.
+
+### 2.5 Dock: Lenovo ThinkPad Ultra 40AJ (optional)
 
 Single-cable via TB3. Provides power, DP/HDMI, Gigabit Ethernet, 2x USB-A. Operators SHOULD prefer the 135W PSU variant.
 
 ---
 
-## 2.5 Firmware: Heads
+## 2.6 Firmware: Heads
 
-### 2.5.1 Threat Model
+### 2.6.1 Threat Model
 
 The T480 ships with Intel Management Engine ([ME]). ME is a separate processor running below the OS. It is invisible to the operator. It survives OS reinstall. It is subject to [CLOUD Act], [FISA 702], and [NSA TAO] compulsion. See [The Threat Actors of Babylon] for further detail.
 
@@ -107,11 +140,11 @@ ME is Babylon embedded in silicon.
 
 Babylon does not need physical access to a machine running ME. It has a key. A Long unit on stock firmware is a Babylon-managed endpoint. It MUST NOT be deployed.
 
-### 2.5.2 Requirement
+### 2.6.2 Requirement
 
 All Long units MUST have stock firmware replaced with [Heads](https://osresearch.net) -- a [coreboot](https://coreboot.org)-based firmware platform providing measured boot, ME neutralisation, and tamper detection -- before ANY use.
 
-### 2.5.3 Heads vs Stock
+### 2.6.3 Heads vs Stock
 
 | Property | Stock | Heads |
 | :--- | :--- | :--- |
@@ -140,13 +173,13 @@ All Long units MUST have stock firmware replaced with [Heads](https://osresearch
 | Build | Gorilla Glass Victus front and back |
 | Security support | to 2027 |
 
-Procurement: refurb. The following MUST be fitted before the unit enters active use.
+Procurement: refurb. Fit the following before deploying the unit.
 
 **Case: [Spigen Tough Armor](https://www.spigen.com/collections/pixel-7-cases)** -- military-grade drop protection, raised edges around screen and camera bar.
 
 **Screen protector: [Spigen GlasTR AlignMaster](https://www.spigen.com/collections/pixel-7-screen-protectors)** -- 9H tempered glass, alignment frame, oleophobic coating, fingerprint sensor compatible.
 
-The Pixel 7 is the minimum viable GrapheneOS platform with Gorilla Glass Victus, verified boot post-install, and active security support to 2027. The Tensor G2 provides a dedicated Titan M2 security chip -- the hardware root of trust GrapheneOS builds on. The 7a is cheaper but uses inferior glass and slower charging; the 8a extends support to 2029 at higher cost.
+The Pixel 7 is the standard GrapheneOS platform -- Gorilla Glass Victus, verified boot post-install, and active security support to 2027. The Tensor G2 provides a dedicated Titan M2 security chip -- the hardware root of trust GrapheneOS builds on. The 7a is cheaper but uses inferior glass and slower charging; the 8a extends support to 2029 at higher cost.
 
 | Model | Support | Refurb cost | Notes |
 | :--- | :--- | :--- | :--- |
@@ -175,19 +208,17 @@ Install GrapheneOS via the [web installer](https://grapheneos.org/install/web) -
 
 ---
 
----
-
----
----
-
 ## 4. Cost Reference
 
-All prices are refurb/used market estimates. Optional components MAY be purchased at any time after initial deployment.
+All prices are refurb market estimates. Optional components MAY be purchased at any time after initial deployment.
+
+### 4.0 Summary
 
 | Configuration | Cost |
 | :--- | :--- |
-| Baseline | GBP 310-415 |
-| Fully loaded | GBP 415-575 |
+| Long (T480) + Short -- baseline | GBP 310-415 |
+| Long (T14 Gen 5) + Short -- baseline | GBP 605-820 |
+| Fully loaded (T480) | GBP 415-575 |
 
 ### 4.1 Long
 
@@ -198,7 +229,12 @@ All prices are refurb/used market estimates. Optional components MAY be purchase
 | ThinkPad T480 (refurb) | GBP 130-160 |
 | 2x 16 GB DDR4 SODIMM | GBP 20-25 |
 | CH341A + SOIC-8 clip | GBP 5-10 |
-| **Total** | **GBP 155-195** |
+| **T480 Total** | **GBP 155-195** |
+
+| Item | Cost |
+| :--- | :--- |
+| ThinkPad T14 Gen 5 (refurb or new) | GBP 450-600 |
+| **T14 Gen 5 Total** | **GBP 450-600** |
 
 #### 4.1.2 Optional
 
