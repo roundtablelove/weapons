@@ -14,6 +14,11 @@ Keywords:  Per RFC 2119
 
 **Sovereign Field Artillery (SFA)** is the personal weaponry of the Knights of the Round Table.
 
+| System | Role |
+| :--- | :--- |
+| **[Long](#1-long)** | primary hacking platform |
+| **[Short](#2-short-pixel-7--grapheneos)** | field communication and mobile compute |
+
 ## 0.1 Executive Summary
 
 The SFA equips every Round Table Hacker with two Babylon-free weapon systems: a primary hacking platform (Long) and a field communicator (Short). Both run sovereign, auditable software stacks. Neither answers to its manufacturer.
@@ -42,7 +47,7 @@ The SFA equips every Round Table Hacker with two Babylon-free weapon systems: a 
 
 ---
 
-## 2. Long
+## 1. Long
 
 Two models are sanctioned. Operators choose based on budget and operational priority.
 
@@ -59,7 +64,7 @@ Two models are sanctioned. Operators choose based on budget and operational prio
 
 The T480 is the default. The T14 Gen 5 is the upgrade path for Hackers who demand modern CPU performance or a longer hardware support runway.
 
-### 2.1 ThinkPad T480
+### 1.1 ThinkPad T480
 
 | Component | Specification |
 | :--- | :--- |
@@ -74,11 +79,11 @@ The T480 is the default. The T14 Gen 5 is the upgrade path for Hackers who deman
 
 Procurement: refurb. Operators MAY purchase base config (8 GB / 256 GB) and upgrade RAM independently.
 
-#### 2.1.1 Rationale
+#### 1.1.1 Rationale
 
 Cheapest sanctioned Long. Heads support is mature. The 1.8mm keyboard defines the typing experience a Hacker requires. The swappable PowerBridge battery enables extended field operations without shutdown.
 
-### 2.2 ThinkPad T14 Gen 5
+### 1.2 ThinkPad T14 Gen 5
 
 | Component | Specification |
 | :--- | :--- |
@@ -93,13 +98,13 @@ Cheapest sanctioned Long. Heads support is mature. The 1.8mm keyboard defines th
 
 Procurement: refurb.
 
-#### 2.2.1 Rationale
+#### 1.2.1 Rationale
 
 Modern CPU, TB4, 16:10 display, and active security support. Heads support for the T14 Gen 5 is less mature than the T480 -- operators MUST verify current Heads compatibility before procurement. No swappable battery.
 
 SFA-1.0 MUST be revised as Heads T14 Gen 5 support matures.
 
-### 2.3 Flash Tooling: CH341A + SOIC-8 (T480 only)
+### 1.3 Flash Tooling: CH341A + SOIC-8 (T480 only)
 
 Operators MUST procure flash tooling before taking delivery of any T480 unit. MAY be shared and reused.
 
@@ -111,19 +116,19 @@ Operators MUST procure flash tooling before taking delivery of any T480 unit. MA
 > [!WARNING]
 > Ensure the `SOIC-8` clip is high-quality (Pomona 5250 or equivalent). Low-grade clips introduce noise into the SPI stream, risking a `Logic_Violation` (brick).
 
-### 2.4 Mobile Connectivity: Sierra Wireless EM7455 (T480 only, optional)
+### 1.4 Mobile Connectivity: Sierra Wireless EM7455 (T480 only, optional)
 
 Slots into the T480 WWAN M.2 bay (2242). Nano-SIM tray is present on chassis. Well-supported on Linux.
 
-### 2.5 Dock: Lenovo ThinkPad Ultra 40AJ (optional)
+### 1.5 Dock: Lenovo ThinkPad Ultra 40AJ (optional)
 
 Single-cable via TB3. Provides power, DP/HDMI, Gigabit Ethernet, 2x USB-A. The 40AJ MUST be paired with the 135W PSU -- the 90W variant cannot sustain full load on the T480. TB4 (T14 Gen 5) is backwards-compatible with TB3 docks.
 
 ---
 
-### 2.6 Firmware: Heads
+### 1.6 Firmware: Heads
 
-#### 2.6.1 Threat Model
+#### 1.6.1 Threat Model
 
 The T480 ships with Intel Management Engine ([ME]). ME is a separate processor running below the OS. It is invisible to the operator. It survives OS reinstall. It is subject to [CLOUD Act], [FISA 702], and [NSA TAO] compulsion. See [The Threat Actors of Babylon] for further detail.
 
@@ -131,11 +136,11 @@ ME is Babylon embedded in silicon.
 
 Babylon does not need physical access to a machine running ME. It has a key. A Long unit on stock firmware is a Babylon-managed endpoint. It MUST NOT be deployed.
 
-#### 2.6.2 Requirement
+#### 1.6.2 Requirement
 
 All Long units MUST have stock firmware replaced with [Heads](https://osresearch.net) -- a [coreboot](https://coreboot.org)-based firmware platform providing measured boot, ME neutralisation, and tamper detection -- before ANY use.
 
-#### 2.6.3 Heads vs Stock
+#### 1.6.3 Heads vs Stock
 
 | Property | Stock | Heads |
 | :--- | :--- | :--- |
@@ -147,9 +152,9 @@ All Long units MUST have stock firmware replaced with [Heads](https://osresearch
 
 
 ---
-## 3. Short: Pixel 7 + GrapheneOS
+## 2. Short: Pixel 7 + GrapheneOS
 
-### 3.1 Machine: Pixel 7
+### 2.1 Machine: Pixel 7
 
 | Component | Specification |
 | :--- | :--- |
@@ -180,7 +185,7 @@ The Pixel 7 is the standard GrapheneOS platform -- Gorilla Glass Victus, verifie
 
 SFA-1.0 MUST be revised when Pixel 7 security support ends in 2027.
 
-### 3.2 OS: GrapheneOS
+### 2.2 OS: GrapheneOS
 
 [GrapheneOS](https://grapheneos.org) is the mandated OS for the Short. Stock Android and all manufacturer skins are Babylon-managed endpoints. They MUST NOT be used.
 
@@ -193,17 +198,17 @@ SFA-1.0 MUST be revised when Pixel 7 security support ends in 2027.
 | Network | Google DNS default | Operator-configured |
 | Operator control | Partial | Full |
 
-### 3.3 Installation
+### 2.3 Installation
 
 Install GrapheneOS via the [web installer](https://grapheneos.org/install/web) -- browser-based, no tools required. Locks the bootloader post-install; verified boot is active on every subsequent boot.
 
 ---
 
-## 4. Cost Reference
+## 3. Cost Reference
 
 All prices are refurb market estimates. Optional components MAY be purchased at any time after initial deployment.
 
-### 4.0 Summary
+### 3.0 Summary
 
 | Configuration | Cost |
 | :--- | :--- |
@@ -211,9 +216,9 @@ All prices are refurb market estimates. Optional components MAY be purchased at 
 | Long (T14 Gen 5) + Short -- baseline | GBP 605-820 |
 | Fully loaded (T480) | GBP 415-575 |
 
-### 4.1 Long
+### 3.1 Long
 
-#### 4.1.1 Standard
+#### 3.1.1 Standard
 
 | Item | Cost |
 | :--- | :--- |
@@ -227,7 +232,7 @@ All prices are refurb market estimates. Optional components MAY be purchased at 
 | ThinkPad T14 Gen 5 (refurb or new) | GBP 450-600 |
 | **T14 Gen 5 Total** | **GBP 450-600** |
 
-#### 4.1.2 Optional
+#### 3.1.2 Optional
 
 | Item | Cost | When |
 | :--- | :--- | :--- |
@@ -236,7 +241,7 @@ All prices are refurb market estimates. Optional components MAY be purchased at 
 | Spare external battery (72 Wh, FRU 01AV427) | GBP 15-30 | Extended field operations; hot-swappable, no shutdown required |
 | Lenovo 40AJ dock + 135W PSU | GBP 40-60 | Permanent home base desk setup |
 
-### 4.2 Short
+### 3.2 Short
 
 | Item | Cost |
 | :--- | :--- |
@@ -386,7 +391,7 @@ echo "Unit is clear to proceed."
 
 Flash Heads per [Heads T480 documentation](https://github.com/linuxboot/heads/blob/master/boards/t480/README.md).
 
-For T14 Gen 5: Flash Heads per the [Heads T14 Gen 5 documentation](https://osresearch.net). Heads support for the T14 Gen 5 is less mature (§2.2.1) -- verify current compatibility before procurement and consult the upstream Heads project for latest flash procedures.
+For T14 Gen 5: Flash Heads per the [Heads T14 Gen 5 documentation](https://osresearch.net). Heads support for the T14 Gen 5 is less mature (§1.2.1) -- verify current compatibility before procurement and consult the upstream Heads project for latest flash procedures.
 
 #### C.1.3 Keys and OS
 
