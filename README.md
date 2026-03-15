@@ -14,27 +14,18 @@ Keywords:  Per RFC 2119
 
 **Sovereign Field Artillery (SFA)** is the personal weaponry of the Knights of the Round Table.
 
-SFA comprises two systems:
-
-- **[Short](#3-short-pixel-7--grapheneos)** -- field communication and mobile compute
-- **[Long](#2-long)** -- primary hacking platform
-
 ## 0.1 Executive Summary
 
-The SFA equips every Round Table Hacker with two Babylon-free weapon systems: a field communicator (Short) and a primary hacking platform (Long). Both run sovereign, auditable software stacks. Neither answers to its manufacturer.
+The SFA equips every Round Table Hacker with two Babylon-free weapon systems: a primary hacking platform (Long) and a field communicator (Short). Both run sovereign, auditable software stacks. Neither answers to its manufacturer.
 
-| | Short | Long |
+| | Long | Short |
 | :--- | :--- | :--- |
-| Hardware | Google Pixel 7 | ThinkPad T480 / T14 Gen 5 |
-| OS | GrapheneOS | NixOS / ArtNix |
-| Firmware | Verified boot (operator keys) | Heads / coreboot |
-| Baseline cost | GBP 155-220 | GBP 155-195 (T480) / GBP 450-600 (T14 Gen 5) |
+| Hardware | ThinkPad T480 / T14 Gen 5 | Google Pixel 7 |
+| OS | NixOS / ArtNix | GrapheneOS |
+| Firmware | Heads / coreboot | Verified boot (operator keys) |
+| Baseline cost | GBP 155-195 (T480) / GBP 450-600 (T14 Gen 5) | GBP 155-220 |
 
-
----
-
-## 1. Requirements
-
+## 0.2 Requirements
 
 | Requirement | Arm | Reason |
 | :--- | :--- | :--- |
