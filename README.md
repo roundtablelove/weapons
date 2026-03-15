@@ -240,7 +240,7 @@ All prices are refurb market estimates. Optional components MAY be purchased at 
 
 | Item | Cost | When |
 | :--- | :--- | :--- |
-| Nitrokey Pro 2 or Librem Key | GBP 40-50 | HOTP tamper detection -- SHOULD be procured |
+| Nitrokey Pro 2 or Librem Key | GBP 40-50 | HOTP tamper detection -- MAY be procured |
 | Sierra Wireless EM7455 | GBP 10-20 | Field operations without trusted Wi-Fi |
 | Spare external battery (72 Wh, FRU 01AV427) | GBP 15-30 | Extended field operations; hot-swappable, no shutdown required |
 | Lenovo 40AJ dock + 135W PSU | GBP 40-60 | Permanent home base desk setup |
@@ -401,7 +401,7 @@ For T14 Gen 5: Flash Heads per the [Heads T14 Gen 5 documentation](https://osres
 
 **Provision TPM** -- the [TPM] stores a measurement of the boot firmware. Heads writes this measurement on first boot; subsequent boots compare against it. Any deviation halts the boot and signals tampering. See [Heads TPM documentation](https://osresearch.net/TPM).
 
-**Provision HOTP key (SHOULD)** -- a hardware security key (Nitrokey Pro 2 or Librem Key -- identical hardware; Nitrokey Pro v1 MUST NOT be used) is provisioned with an HOTP secret shared with the TPM. On every boot Heads generates a one-time code; the operator verifies it matches the key's display before unlocking the disk. A mismatched code means the machine has been tampered with. See [Heads HOTP documentation](https://osresearch.net/HOTP-U2F-One-Time-Password).
+**Provision HOTP key (MAY)** -- a hardware security key (Nitrokey Pro 2 or Librem Key -- identical hardware; Nitrokey Pro v1 MUST NOT be used) is provisioned with an HOTP secret shared with the TPM. On every boot Heads generates a one-time code; the operator verifies it matches the key's display before unlocking the disk. A mismatched code means the machine has been tampered with. See [Heads HOTP documentation](https://osresearch.net/HOTP-U2F-One-Time-Password).
 
 Install NixOS via [ArtNix](https://github.com/0compute/artnix).
 
