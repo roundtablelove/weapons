@@ -25,10 +25,10 @@ The SFA equips every Round Table Hacker with two Babylon-free weapon systems: a 
 
 | | Short | Long |
 | :--- | :--- | :--- |
-| Hardware | Google Pixel 7 | Lenovo ThinkPad T480 |
+| Hardware | Google Pixel 7 | ThinkPad T480 / T14 Gen 5 |
 | OS | GrapheneOS | NixOS / ArtNix |
 | Firmware | Verified boot (operator keys) | Heads / coreboot |
-| Baseline cost | GBP 155-220 | GBP 155-195 |
+| Baseline cost | GBP 155-220 | GBP 155-195 (T480) / GBP 450-600 (T14 Gen 5) |
 
 
 ---
@@ -110,7 +110,7 @@ SFA-1.0 MUST be revised as Heads T14 Gen 5 support matures.
 
 ### 2.3 Flash Tooling: CH341A + SOIC-8 (T480 only)
 
-Operators MUST procure flash tooling before taking delivery of any Long unit. MAY be shared and reused.
+Operators MUST procure flash tooling before taking delivery of any T480 unit. MAY be shared and reused.
 
 | Item | Purpose |
 | :--- | :--- |
@@ -120,19 +120,19 @@ Operators MUST procure flash tooling before taking delivery of any Long unit. MA
 > [!WARNING]
 > Ensure the `SOIC-8` clip is high-quality (Pomona 5250 or equivalent). Low-grade clips introduce noise into the SPI stream, risking a `Logic_Violation` (brick).
 
-### 2.4 Mobile Connectivity: Sierra Wireless EM7455 (optional)
+### 2.4 Mobile Connectivity: Sierra Wireless EM7455 (T480 only, optional)
 
 Slots into the T480 WWAN M.2 bay (2242). Nano-SIM tray is present on chassis. Well-supported on Linux.
 
 ### 2.5 Dock: Lenovo ThinkPad Ultra 40AJ (optional)
 
-Single-cable via TB3. Provides power, DP/HDMI, Gigabit Ethernet, 2x USB-A. The 40AJ MUST be paired with the 135W PSU -- the 90W variant cannot sustain full load on the T480.
+Single-cable via TB3. Provides power, DP/HDMI, Gigabit Ethernet, 2x USB-A. The 40AJ MUST be paired with the 135W PSU -- the 90W variant cannot sustain full load on the T480. TB4 (T14 Gen 5) is backwards-compatible with TB3 docks.
 
 ---
 
-## 2.6 Firmware: Heads
+### 2.6 Firmware: Heads
 
-### 2.6.1 Threat Model
+#### 2.6.1 Threat Model
 
 The T480 ships with Intel Management Engine ([ME]). ME is a separate processor running below the OS. It is invisible to the operator. It survives OS reinstall. It is subject to [CLOUD Act], [FISA 702], and [NSA TAO] compulsion. See [The Threat Actors of Babylon] for further detail.
 
@@ -140,11 +140,11 @@ ME is Babylon embedded in silicon.
 
 Babylon does not need physical access to a machine running ME. It has a key. A Long unit on stock firmware is a Babylon-managed endpoint. It MUST NOT be deployed.
 
-### 2.6.2 Requirement
+#### 2.6.2 Requirement
 
 All Long units MUST have stock firmware replaced with [Heads](https://osresearch.net) -- a [coreboot](https://coreboot.org)-based firmware platform providing measured boot, ME neutralisation, and tamper detection -- before ANY use.
 
-### 2.6.3 Heads vs Stock
+#### 2.6.3 Heads vs Stock
 
 | Property | Stock | Heads |
 | :--- | :--- | :--- |
@@ -299,7 +299,54 @@ All prices are refurb market estimates. Optional components MAY be purchased at 
 
 ---
 
+## Appendix A: Vendors
+
+All hardware MUST be sourced refurbished. Refurb is preferred for cost, availability, and biological hygiene -- used hardware has been broken in and is free of factory contamination.
+
+| Item | Vendor |
+| :--- | :--- |
+| Pixel 7 | [eBay UK](https://www.ebay.co.uk), [Back Market](https://www.backmarket.co.uk) |
+| Spigen Tough Armor (Pixel 7) | [Spigen](https://www.spigen.com/collections/pixel-7-cases) |
+| Spigen GlasTR AlignMaster (Pixel 7) | [Spigen](https://www.spigen.com/collections/pixel-7-screen-protectors) |
+| ThinkPad T480, accessories, spare parts | [eBay UK](https://www.ebay.co.uk), [Back Market](https://www.backmarket.co.uk) |
+| Lenovo spare parts (official) | [Lenovo Parts](https://pcsupport.lenovo.com/gb/en/products/laptops-and-netbooks/thinkpad-t-series-laptops/thinkpad-t480-type-20l5-20l6/parts) |
+| CH341A + SOIC-8 clip | [eBay UK](https://www.ebay.co.uk) |
+| Nitrokey (HOTP key) | [Nitrokey](https://www.nitrokey.com) |
+| Librem Key (HOTP key) | [Purism](https://puri.sm/products/librem-key) |
+
 ---
+
+## Appendix B: Keyboard FRU Reference (T480 only)
+
+All T480 units support backlit keyboard swap -- no motherboard restriction. The backlit cable is fragile; handle with care. Lenovo sources keyboards from multiple manufacturers (LiteOn, Chicony, Sunrex) -- all meet the same spec. FRU number is what matters; manufacturer is batch-dependent.
+
+| Language | FRU | Notes |
+| :--- | :--- | :--- |
+| Arabic | 01HX464 | Covers Urdu (shared script) |
+| Dutch | 01HX474 | |
+| English (UK) | 01HX429 | |
+| English (US) | 01HX419 | |
+| French | 01HX470 | |
+| German | 01HX471 | |
+| Indonesian | 01HX419 | Uses US layout; Latin script |
+| Italian | 01HX475 | |
+| Japanese | 01HX476 | |
+| Korean | 01HX477 | |
+| Mandarin Chinese (Simplified) | -- | Regional supply only; source via Lenovo China or Taobao |
+| Mandarin Chinese (Traditional) | 01HX451 | TW market |
+| Polish | 01HX480 | |
+| Portuguese (Brazilian) | 01HX463 | |
+| Russian | 01HX478 | |
+| Spanish | 01HX469 | |
+| Swahili | 01HX419 | Uses US layout; Latin script |
+| Swedish / Finnish | 01HX483 | |
+| Turkish | 01HX446 | |
+| Vietnamese | 01HX419 | Uses US layout; Latin script with diacritics via OS |
+
+Source: [Lenovo Hardware Maintenance Manual T480](https://download.lenovo.com/pccbbs/mobiles_pdf/t480_hmm_en.pdf).
+
+---
+
 ## Appendix C: Operator Onboarding
 
 ### C.1 Long
@@ -348,6 +395,8 @@ echo "Unit is clear to proceed."
 
 Flash Heads per [Heads T480 documentation](https://github.com/linuxboot/heads/blob/master/boards/t480/README.md).
 
+For T14 Gen 5: Flash Heads per the [Heads T14 Gen 5 documentation](https://osresearch.net). Heads support for the T14 Gen 5 is less mature (§2.2.1) -- verify current compatibility before procurement and consult the upstream Heads project for latest flash procedures.
+
 #### C.1.3 Keys and OS
 
 **Provision TPM** -- the [TPM] stores a measurement of the boot firmware. Heads writes this measurement on first boot; subsequent boots compare against it. Any deviation halts the boot and signals tampering. See [Heads TPM documentation](https://osresearch.net/TPM).
@@ -359,50 +408,3 @@ Install NixOS via [ArtNix](https://github.com/0compute/artnix).
 ### C.2 Short
 
 Install GrapheneOS via the [web installer](https://grapheneos.org/install/web). The installer handles bootloader unlock, flashing, and relock. Verified boot is active post-install.
-
-
-## Appendix A: Vendors
-
-All hardware MUST be sourced refurbished. Refurb is preferred for cost, availability, and biological hygiene -- used hardware has been broken in and is free of factory contamination.
-
-| Item | Vendor |
-| :--- | :--- |
-| Pixel 7 | [eBay UK](https://www.ebay.co.uk), [Back Market](https://www.backmarket.co.uk) |
-| Spigen Tough Armor (Pixel 7) | [Spigen](https://www.spigen.com/collections/pixel-7-cases) |
-| Spigen GlasTR AlignMaster (Pixel 7) | [Spigen](https://www.spigen.com/collections/pixel-7-screen-protectors) |
-| ThinkPad T480, accessories, spare parts | [eBay UK](https://www.ebay.co.uk), [Back Market](https://www.backmarket.co.uk) |
-| Lenovo spare parts (official) | [Lenovo Parts](https://pcsupport.lenovo.com/gb/en/products/laptops-and-netbooks/thinkpad-t-series-laptops/thinkpad-t480-type-20l5-20l6/parts) |
-| CH341A + SOIC-8 clip | [eBay UK](https://www.ebay.co.uk) |
-| Nitrokey (HOTP key) | [Nitrokey](https://www.nitrokey.com) |
-| Librem Key (HOTP key) | [Purism](https://puri.sm/products/librem-key) |
-
----
-
-## Appendix B: Keyboard FRU Reference (Long)
-
-All T480 units support backlit keyboard swap -- no motherboard restriction. The backlit cable is fragile; handle with care. Lenovo sources keyboards from multiple manufacturers (LiteOn, Chicony, Sunrex) -- all meet the same spec. FRU number is what matters; manufacturer is batch-dependent.
-
-| Language | FRU | Notes |
-| :--- | :--- | :--- |
-| Arabic | 01HX464 | Covers Urdu (shared script) |
-| Dutch | 01HX474 | |
-| English (UK) | 01HX429 | |
-| English (US) | 01HX419 | |
-| French | 01HX470 | |
-| German | 01HX471 | |
-| Indonesian | 01HX419 | Uses US layout; Latin script |
-| Italian | 01HX475 | |
-| Japanese | 01HX476 | |
-| Korean | 01HX477 | |
-| Mandarin Chinese (Simplified) | -- | Regional supply only; source via Lenovo China or Taobao |
-| Mandarin Chinese (Traditional) | 01HX451 | TW market |
-| Polish | 01HX480 | |
-| Portuguese (Brazilian) | 01HX463 | |
-| Russian | 01HX478 | |
-| Spanish | 01HX469 | |
-| Swahili | 01HX419 | Uses US layout; Latin script |
-| Swedish / Finnish | 01HX483 | |
-| Turkish | 01HX446 | |
-| Vietnamese | 01HX419 | Uses US layout; Latin script with diacritics via OS |
-
-Source: [Lenovo Hardware Maintenance Manual T480](https://download.lenovo.com/pccbbs/mobiles_pdf/t480_hmm_en.pdf).
