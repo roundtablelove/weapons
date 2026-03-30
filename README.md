@@ -299,8 +299,8 @@ bootloader post-install. TNF verified boot is now active.
 
 > [!WARNING]
 >
-> Do not trust the manufacturer's IP68 waterproof rating. It is pure Babylon
-> bullshit. Phones are tested by being gently lowered into sterile, distilled
+> Do not trust the manufacturer's IP68 waterproof rating. It is Pure Babylon
+> Bullshit. Phones are tested by being gently lowered into sterile, distilled
 > water in a laboratory. Out in the mud, a drop into saltwater, chlorinated
 > water, or a stagnant gutter will instantly bridge the pins in the Type-C port
 > and corrode the logic board. The device is *water-resistant* under controlled
@@ -324,8 +324,7 @@ SIM/eSIM and are back on the matrix in 60 seconds or less.
 
 All hardware MUST be sourced refurbished. We do not pay the Babylon premium for
 new kit. Used hardware is broken in and more likely to be free of factory
-supply-chain implants. Let the servants of Babylon take the initial depreciation
-hit.
+supply-chain implants.
 
 ### A.1 Sanctioned Vendors
 
@@ -483,7 +482,7 @@ the upstream Heads project for latest flash procedures.
 - **Provision HOTP Key (MAY):** A hardware security key (Nitrokey Pro 2 or
   Librem Key) is provisioned with an HOTP secret shared with the TPM. On every
   boot, Heads generates a one-time code; verify it matches the key's display
-  before unlocking the disk. A mismatched code means Babylon has had their dirty
+  before unlocking the disk. A mismatched code means someone has had their dirty
   fingers inside your rig.
 - **Install OS:** Deploy NixOS via [ArtNix](https://github.com/0compute/artnix).
 
